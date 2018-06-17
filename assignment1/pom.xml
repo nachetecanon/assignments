@@ -5,9 +5,10 @@
 	 <modelVersion>4.0.0</modelVersion>
 	 <parent>
 	    <groupId>org.icanon</groupId>
-	    <artifactId>assignmens-parent-pom</artifactId>
+	    <artifactId>assignments-parent-pom</artifactId>
 	    <version>1.0.0-SNAPSHOT</version>
 	</parent>
+	<artifactId>assignment1</artifactId>
     <packaging>jar</packaging>
     <description>assignment 1</description>
     <properties>

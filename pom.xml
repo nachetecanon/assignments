@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.icanon</groupId>
-    <artifactId>assignmens-parent-pom</artifactId>
+    <artifactId>assignments-parent-pom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>Parent pom for PredictX assignments</description>
@@ -15,12 +15,13 @@
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
+        <main-class>_</main-class>
         <!-- cobertura -->
         <cobertura-branch.rate>75</cobertura-branch.rate>
         <cobertura-line.rate>90</cobertura-line.rate>
     </properties>
     <modules>
-        <module>assign1</module>
+        <module>assignment1</module>
     </modules>
     <build>
         <pluginManagement>
@@ -86,9 +87,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <skipSource>${source.skip}</skipSource>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -116,10 +114,13 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
-                    <skip>${cobertura.skip}</skip>
                     <aggregate>true</aggregate>
                     <instrumentation>
                         <ignoreTrivial>true</ignoreTrivial>
+                        <excludes>
+                            <exclude>**/generated/**</exclude>
+                            <exclude>**/Application*.class</exclude>
+                        </excludes>
                     </instrumentation>
                     <check>
                         <haltOnFailure>true</haltOnFailure>
@@ -128,18 +129,18 @@
                     </check>
                 </configuration>
             </plugin>
-	    <plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-jar-plugin</artifactId>
-		    <configuration>
-			    <archive>
-				    <manifest>
-					    <addClasspath>true</addClasspath>
-					    <mainClass>${main-class}</mainClass>
-				   </manifest>
-		            </archive>
-		    </configuration>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>${main-class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
