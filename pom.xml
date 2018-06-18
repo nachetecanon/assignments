@@ -19,10 +19,27 @@
         <!-- cobertura -->
         <cobertura-branch.rate>75</cobertura-branch.rate>
         <cobertura-line.rate>90</cobertura-line.rate>
+        <!-- testing -->
+        <junit.version>4.12</junit.version>
+        <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
     <modules>
         <module>assignment1</module>
     </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
