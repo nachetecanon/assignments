@@ -1,4 +1,4 @@
-= Nauthilus MDQ Server project
+= Assignments solution
 v{docs-version}, generated at: {compile-time}
 :github: git@github.com:nachetecanon/assignments.git
 :toc:
