@@ -72,7 +72,7 @@ public class WebControllerTest {
         mockMvc.perform(post("/api/mix")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isBadRequest())
-                .andDo(document("baddcall1"));
+                .andDo(document("badcall1"));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class WebControllerTest {
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(objectMapper.writeValueAsString(data)))
                 .andExpect(status().isBadRequest())
-                .andDo(document("baddcall2"))
+                .andDo(document("badcall2"))
                 .andReturn().getResponse().getContentAsString())
                 .isEqualTo("argument list must not be null!");
     }
