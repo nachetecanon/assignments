@@ -50,9 +50,13 @@ public class WebControllerTest {
 
     @Test
     public void assert_regular_call_returns_expected_string() throws Exception {
-        final String expectedData = "1,2:aaaaaa/2:eeeee/1,2:fffff/2:rr/1:tt/1,2:hh";
+        final String expectedData = "2:ttttttttt/3:eeeeeeee/3:aaaaaaa/5:ooooooo/5:iiiii/2:lllll/3:nnnnn/5:rrrrr/2:sssss/2,4:mmmm/3:ggg/2,4:hhh/5:cc/3:uu/5:ww/2,5:ff/3,5:vv/4,5:xx";
         Data data = new Data();
-        data.setStrings(Arrays.asList("Are the kids at home? aaaaa fffff", "Yes they are here! aaaaa fffff"));
+        data.setStrings(Arrays.asList("\n",
+                "Calling stream() method on the list to get a stream of values from the list\n",
+                "Calling mapToInt(value -> value) on the stream to get an Integer Stream\n",
+                "Calling max() method on the stream to get the max value\n",
+                "Calling orElseThrow() to throw an exception if no value is received from max()"));
         MvcResult result = mockMvc.perform(post("/api/mix")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(objectMapper.writeValueAsString(data)))
