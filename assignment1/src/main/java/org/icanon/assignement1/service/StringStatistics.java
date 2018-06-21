@@ -1,10 +1,10 @@
 package org.icanon.assignement1.service;
 
 
-import org.icanon.assignement1.model.Stat;
+import org.icanon.assignements.model.Stat;
+import org.icanon.assignements.model.StatService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -45,6 +45,12 @@ import java.util.stream.Collectors;
  */
 public class StringStatistics {
 
+    private final StatService statService;
+
+    public StringStatistics(StatService statService) {
+        this.statService = statService;
+    }
+
     /**
      * Mix string.
      *
@@ -59,8 +65,8 @@ public class StringStatistics {
                 .orElseThrow(() -> new IllegalArgumentException("second argument must not be null!"));
         final List<Stat> result = new ArrayList<>();
         // create maps of statistics for each string
-        final Map<Character, Stat> aggregatedS1 = aggregateByChar(1, filterLowercaseCharactersOnly(string1));
-        final Map<Character, Stat> aggregatedS2 = aggregateByChar(2, filterLowercaseCharactersOnly(string2));
+        final Map<Character, Stat> aggregatedS1 = statService.aggregateByChar("1", statService.filterLowercaseCharactersOnly(string1), "=");
+        final Map<Character, Stat> aggregatedS2 = statService.aggregateByChar("2", statService.filterLowercaseCharactersOnly(string2), "=");
 
         // iterate over first map, for populating the result list.
         // For each item, search if the character exists at the second map, and if true, choose the one with higher
@@ -98,41 +104,9 @@ public class StringStatistics {
         } else if (value.getFrequency() < cS2.getFrequency()) {
             return cS2;
         } else {
-            return new Stat(0, value.getCharToBeCounted()).setFrequency(value.getFrequency());
+            return new Stat("=", value.getCharToBeCounted(), "=").setFrequency(value.getFrequency());
         }
     }
 
-    /**
-     * removes from passed string any character non between a-z (lowercase).
-     * Excludes also admiration, question tags, and other simbols
-     *
-     * @param string original string
-     * @return string lowercased with only the characters filtered.
-     */
-    private String filterLowercaseCharactersOnly(final String string) {
-        return string.replaceAll("[\\\\\\\\!\\\"#$%&()*+,./:;<=>?@\\\\[\\\\]^_{|}~\\sA-Z]+", "");
-    }
-
-    /**
-     * Construct a map of statistics of number of different characters in the passed string.
-     * The map will have as key the character readed, and as value a new Stat class, with the id passed,
-     * the char to be counted, and the frequency of its occurrences at string parameter.
-     *
-     * @param id     identifier of the Stat class
-     * @param string string to be processed
-     * @return map
-     */
-    private Map<Character, Stat> aggregateByChar(int id, final String string) {
-        Map<Character, Stat> mapToReturn = new HashMap<>();
-        for (int i = 0; i < string.length(); i++) {
-            if (mapToReturn.containsKey(string.charAt(i))) {
-                final Stat data = mapToReturn.get(string.charAt(i));
-                data.setFrequency(data.getFrequency() + 1);
-            } else {
-                mapToReturn.put(string.charAt(i), new Stat(id, string.charAt(i)).setFrequency(1));
-            }
-        }
-        return mapToReturn;
-    }
 
 }

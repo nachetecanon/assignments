@@ -1,0 +1,44 @@
+= Nauthilus MDQ Server project
+v{docs-version}, generated at: {compile-time}
+:github: git@github.com:nachetecanon/assignments.git
+:toc:
+:nofooter:
+
+== Correct call
+This is one way you can try the REST-API
+
+=== Curl
+include::{snippets}/okcall/curl-request.adoc[]
+
+=== Request
+
+include::{snippets}/okcall/http-request.adoc[]
+
+=== Response
+
+include::{snippets}/okcall/http-response.adoc[]
+
+== Bad param (use case 1)
+In case you don't provide any parameter, a bad request will be returned
+
+=== Curl
+include::{snippets}/badcall1/curl-request.adoc[]
+
+=== Request
+include::{snippets}/badcall1/http-request.adoc[]
+
+=== Response
+include::{snippets}/badcall1/http-response.adoc[]
+
+
+== Bad param (use case 2)
+In case you don't provide some of the elements of the list , a bad request will be returned
+
+=== Curl
+include::{snippets}/badcall2/curl-request.adoc[]
+
+=== Request
+include::{snippets}/badcall2/http-request.adoc[]
+
+=== Response
+include::{snippets}/badcall2/http-response.adoc[]

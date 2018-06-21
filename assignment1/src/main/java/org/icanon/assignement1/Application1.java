@@ -1,6 +1,7 @@
 package org.icanon.assignement1;
 
 import org.icanon.assignement1.service.StringStatistics;
+import org.icanon.assignements.model.StatService;
 
 import static java.lang.System.exit;
 
@@ -20,7 +21,7 @@ public class Application1 {
     }
 
     private void run() {
-        StringStatistics st = new StringStatistics();
+        StringStatistics st = new StringStatistics(new StatService());
         System.out.println("Result: " + st.mix(s1, s2));
     }
 
