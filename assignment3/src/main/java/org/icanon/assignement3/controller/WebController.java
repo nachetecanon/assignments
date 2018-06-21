@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+
 @RestController
 public class WebController {
     private static final String EQUALS_SYMBOL = ",";
@@ -27,9 +29,9 @@ public class WebController {
         this.statService = statService;
     }
 
-    @PostMapping(path = "/api/mix", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<String> mix(@RequestBody @Validated final Data data) {
-        return ResponseEntity.ok(statService.mix(data.getStrings(), EQUALS_SYMBOL));
+    @PostMapping(path = "/api/mix", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Data> mix(@RequestBody @Validated final Data data) {
+        return ResponseEntity.ok(new Data().setStrings(Arrays.asList(statService.mix(data.getStrings(), EQUALS_SYMBOL))));
     }
 
 }

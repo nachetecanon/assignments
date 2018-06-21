@@ -176,7 +176,7 @@ public class StatServiceTest {
      * s2= "You should be coding!!"
      * s3= "c'amon baby, you should see it;)"
      * s4= "several errors today"
-     * mix(s1,s2,s3,s4) --> "
+     * mix(s1,s2,s3,s4) --> 4:rrrr/1,4:eee/2,3:ooo/3:bb/2:dd/3:yy/3,4:aa/3,4:ss/2,3:uu"
      * </code>
      */
 

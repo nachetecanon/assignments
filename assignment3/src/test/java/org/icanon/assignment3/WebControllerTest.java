@@ -50,7 +50,7 @@ public class WebControllerTest {
 
     @Test
     public void assert_regular_call_returns_expected_string() throws Exception {
-        final String expectedData = "2:ttttttttt/3:eeeeeeee/3:aaaaaaa/5:ooooooo/5:iiiii/2:lllll/3:nnnnn/5:rrrrr/2:sssss/2,4:mmmm/3:ggg/2,4:hhh/5:cc/3:uu/5:ww/2,5:ff/3,5:vv/4,5:xx";
+        final String expectedData = "{\"strings\":[\"2:ttttttttt/3:eeeeeeee/3:aaaaaaa/5:ooooooo/5:iiiii/2:lllll/3:nnnnn/5:rrrrr/2:sssss/2,4:mmmm/3:ggg/2,4:hhh/5:cc/3:uu/5:ww/2,5:ff/3,5:vv/4,5:xx\"]}";
         Data data = new Data();
         data.setStrings(Arrays.asList("\n",
                 "Calling stream() method on the list to get a stream of values from the list\n",
